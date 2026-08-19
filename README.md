@@ -16,3 +16,11 @@ and then map those categories onto numbers. A 0.79 vs 0.81 difference may be ess
 
 In short:
   **A prompted 0-1 score is generally not a meaningful continuous measurment unless you calibrate it. If your downstream metric is pass/fail, ask the model directly for pass/fail. Keep continuous or ordinal scores only if you actually need ranking**
+
+## Embedding vs LLM call
+We are comparing two texts, AI assistant answer and ground truth, why not using embeddings and cosine similarity instead of an LLM call which is more costly and slower?
+
+Two text embeddings may be really close (which means semantically) but mean completely the opposite for example:
+  1. I need an oil break
+  2. I don't need an oil break
+
