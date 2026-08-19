@@ -24,3 +24,6 @@ Two text embeddings may be really close (which means semantically) but mean comp
   1. I need an oil break
   2. I don't need an oil break
 
+
+## Duck DB
+It is an analytical SQL database, similar to SQLite but optimized for analytics rather than transactional workloads. It is especially good when your data is sotred as Parquet, CSV, JSON, or pandas, because you can query them directly without running a separate database server.
