@@ -47,3 +47,31 @@ random number = 0.84 → FAIL
 
 ## Eval lock file
 Suppose an engineer changes the agent prompt, but 950 out of your 1,000 test cases produce exactly the same candidate answers. You can reuse the cached/locked results for unchanged evaluations and judge only the changed ones
+
+## Treating each data set item as a Bernoulli trial allows for flexible aggregation methods, including Bayesian updating or Monte Carlo sampling.
+
+Suppose you evaluate 100 dataset items and get:
+
+83 Pass
+
+17 Fail
+
+### Bayesian Updating
+Bernoulli data works naturally with a Beta distribution. start with
+
+p ~ Beta(1,1)
+
+which says, "I don't know the true pass rate yet"
+
+After observation
+
+p | data ~ Beta(84, 18)
+
+Now instead of saying pass rate is 83%. We can reason about the uncertainty around that number. And when you get another batch of evaluations, you don't need to start over. You update the existing Beta distribution with the new passes and failures. 
+
+### Monte Carlo
+Now we have a probability distribution, we can randomly sample from
+
+```py
+p_samples = beta.rvs(84, 18, size=100_000)
+```
