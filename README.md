@@ -27,3 +27,7 @@ Two text embeddings may be really close (which means semantically) but mean comp
 
 ## Duck DB
 It is an analytical SQL database, similar to SQLite but optimized for analytics rather than transactional workloads. It is especially good when your data is sotred as Parquet, CSV, JSON, or pandas, because you can query them directly without running a separate database server.
+
+## Make the LLM evaluator behave more like a deterministic test suite than a probabilistic judge
+  ### Temperature + Seed are about reproducibility
+      - **Temperature** controls 
