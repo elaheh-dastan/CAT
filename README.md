@@ -75,3 +75,20 @@ Now we have a probability distribution, we can randomly sample from
 ```py
 p_samples = beta.rvs(84, 18, size=100_000)
 ```
+
+Then we can answer to questions like "What's the probability that our true pass rate is above 80%?"
+
+Or compare two prompt versions:
+
+Prompt A: Beta(84, 18)
+Prompt B: Beta(91, 11)
+
+
+```py
+a = beta.rvs(84, 18, size=100_000)
+b = beta.rvs(91, 11, size=100_000)
+
+probability_b_better = (b > a).mean()
+```
+
+you might get 0.94 meaning: There is approximately a 94% posterior probability that Prompt B has a higher pass rate than Prompt A.
