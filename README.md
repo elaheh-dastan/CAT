@@ -29,5 +29,16 @@ Two text embeddings may be really close (which means semantically) but mean comp
 It is an analytical SQL database, similar to SQLite but optimized for analytics rather than transactional workloads. It is especially good when your data is sotred as Parquet, CSV, JSON, or pandas, because you can query them directly without running a separate database server.
 
 ## Make the LLM evaluator behave more like a deterministic test suite than a probabilistic judge
-  ### Temperature + Seed are about reproducibility
-      - **Temperature** controls 
+
+### Temperature + Seed are about reproducibility
+
+- **Temperature** controls how much randomness is applied when sampling the next token from the model's probability distribution. At temp=0, decoding is effectively greedy: the model tends to select the highest probability token each step
+- **Seed** initializes the pseudo-random number generator used during sampling. A **seed** is just the starting value for the pseudo-ransom number generator used when the model samples tokens. Suppose the model assigns
+
+PASS = 0.7
+FAIL = 0.3
+
+If sampling is enabled the system generates a pseudo random number to decide which token to pick. For example:
+
+random number = 0.21 → PASS
+random number = 0.84 → FAIL
