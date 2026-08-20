@@ -44,3 +44,6 @@ If sampling is enabled the system generates a pseudo random number to decide whi
 random number = 0.21 → PASS
 
 random number = 0.84 → FAIL
+
+## Eval lock file
+Suppose an engineer changes the agent prompt, but 950 out of your 1,000 test cases produce exactly the same candidate answers. You can reuse the cached/locked results for unchanged evaluations and judge only the changed ones
