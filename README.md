@@ -36,9 +36,11 @@ It is an analytical SQL database, similar to SQLite but optimized for analytics 
 - **Seed** initializes the pseudo-random number generator used during sampling. A **seed** is just the starting value for the pseudo-ransom number generator used when the model samples tokens. Suppose the model assigns
 
 PASS = 0.7
+
 FAIL = 0.3
 
 If sampling is enabled the system generates a pseudo random number to decide which token to pick. For example:
 
 random number = 0.21 → PASS
+
 random number = 0.84 → FAIL
