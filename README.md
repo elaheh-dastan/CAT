@@ -92,3 +92,26 @@ probability_b_better = (b > a).mean()
 ```
 
 you might get 0.94 meaning: There is approximately a 94% posterior probability that Prompt B has a higher pass rate than Prompt A.
+
+## BLEU
+**Bilingual Evaluation Understudy** is a metric for comparing a generated text with one or more reference texts. It was originally designed for machine translation.
+
+The main idea is: **how many short word sequences in the generated answer also appear in the reference?**
+
+Suppose:
+
+- Reference: the cat is sitting on the mat
+- Generated: the cat is on the mat
+
+BLEU looks at n-grams:
+
+- 1-grams: the, cat, is
+- 2-grams: the cat, cat is, is on
+- 3 grams: triples
+- 4 grams: sequences of four words
+
+  it calculates:
+
+  p_n = matching n-grams / generated n-grams
+
+  
