@@ -114,4 +114,26 @@ BLEU looks at n-grams:
 
   p_n = matching n-grams / generated n-grams
 
-  
+Then BLEU combines these using a geometric mean, typically BLEU-4:  
+
+  BLEU = BP * exp(1/4 sigma_(n=1,4)(log(p_n)))
+
+### Geometric Mean
+The important difference is geometric mean **punishes low values more strongly**
+
+A normal arithmetic mean would be:
+
+  (0.8 + 0.6 + 0.4 + 0.01)/4 = 0.4525
+
+The geometric mean is:
+
+  (0.8 * 0.6 * 0.4 * 0.01) to power of 1/4 = 0.21
+
+This is useful for BLEU because we don't want a translation to get a good score just because individual words match. **You need to perform reasonably well on all n-gram levels; one very bad level should significantly hurt the final score.**
+
+### Brevity Penalty
+Without it a model could generate something extremely short like: "the cat" and get high precision because every word matches. So BLEU penalizes outputs that are much shorter than the reference
+
+### Caveat
+Two sentences may be semantically equivalent, but share very few n-grams and vice versa so if you want to know 
+whether the sentences have the same meaning, BLEU is usually not a good primary metric
