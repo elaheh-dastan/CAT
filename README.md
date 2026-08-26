@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="caterpillar.svg" width="160" alt="Caterpillar" />
+  <img src="assets/caterpillar-logo.png" width="320" alt="Caterpillar" />
 </p>
 
 <h1 align="center">CAT</h1>
