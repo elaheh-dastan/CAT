@@ -161,3 +161,4 @@ This is the chain-of-thought-inspired component of G-Eval.
 G-Eval can inspect the probability distribution over possible score tokens. If your model adapter does not expose the required log-probabilities, DeepEval falls back to the raw integer score.
 
 
+
