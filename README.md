@@ -141,3 +141,23 @@ Without it a model could generate something extremely short like: "the cat" and 
 ### Caveat
 Two sentences may be semantically equivalent, but share very few n-grams and vice versa so if you want to know 
 whether the sentences have the same meaning, BLEU is usually not a good primary metric
+
+# G-Eval
+G-Eval is an LLM-as-a-judge scoring algorithm. Its original objective was to improve correlation between LLM-generated scores and human judgments, particularly for summarization and dialogue generation—not to eliminate pass/fail flip-flops.
+
+## How it works
+1. Generate evaluation steps (Transform evaluation criteria into detailed judging instructions)
+2. LLM evaluates the output (Apply those steps and produce an integer score with reasoning)
+3. Calculate final score (Optionally weight candidate scores by token probabilities, normalize to 0–1, and apply a threshold)
+
+Suppose you're comparing two answers for semantic equivalence. G-Eval asks the judge to translate this into evaluation instructions, such as:
+1. Identify the essential information in the expected output
+2. Check whether the actual output preserves that information
+3. Identify contradictions or meaningful omissions
+4. Ignore differences in wording that do not change meaning
+
+This is the chain-of-thought-inspired component of G-Eval.
+
+G-Eval can inspect the probability distribution over possible score tokens. If your model adapter does not expose the required log-probabilities, DeepEval falls back to the raw integer score.
+
+
