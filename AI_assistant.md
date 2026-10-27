@@ -27,15 +27,17 @@ flowchart TD
 ```mermaid
 flowchart TD
     A["🎙️ Reference Audio<br/>Speaker's Voice"]
-    B["3. Speaker Representation<br/>Speaker Encoder or Reference Audio Features"]
-    C["🔑 Voice Identity<br/>Speaker Conditioning"]
-    D["📝 Target Text<br/>Text Tokens or Phonemes"]
-    E["4. Neural Speech Generator<br/>Predicts Acoustic Features or Audio Tokens"]
-    F["5. Vocoder / Audio Decoder<br/>Produces Final Waveform"]
-    G["🔊 Synthesized Speech<br/>New Sentence in Target Voice"]
+    B["Audio preprocessing<br/>Resampling, trimming silence, etc"]
+    C["Speaker Representation<br/>Speaker Encoder (speaker embedding) or Reference Audio Features"]
+    D["🔑 Voice Identity<br/>Speaker Conditioning"]
+    E["📝 Target Text<br/>Text Tokens or Phonemes"]
+    F["Neural Speech Generator<br/>Predicts Acoustic Features or Audio Tokens"]
+    G["Vocoder / Audio Decoder<br/>Produces Final Waveform"]
+    H["🔊 Synthesized Speech<br/>New Sentence in Target Voice"]
 
     A --> B
     B --> C
+    C --> D
     C --> E
     D --> E
     E --> F
