@@ -44,3 +44,6 @@ flowchart TD
     F --> G
     G --> H
 ```
+
+### What is a speaker embedding?
+An audio encoder can transform a speech recording into a fixed-dimensional vector representing speaker characteristics like timbre and accent.
