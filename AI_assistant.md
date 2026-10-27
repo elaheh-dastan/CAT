@@ -52,4 +52,15 @@ flowchart TD
 ### What is a speaker embedding?
 An audio encoder can transform a speech recording into a fixed-dimensional vector representing speaker characteristics like timbre and accent.
 
+## Which models and tools should you know?
+ElevenLabs: Managed API and hosted voice-cloning products. Useful for quickly evaluating quality without managing GPU infrastructure.
 
+## How do you evaluate voice cloning?
+| Metric | What it answers | How |
+|---|---|---|
+| Speaker similarity | Does it sound like the target person? | Speaker embeddings + cosine similarity |
+| MOS/naturalness | Does it sound like natural speech? | Human listener ratings |
+| WER | Were the intended words spoken correctly? | ASR transcript compared with target text | 
+| Latency / RTF	| Is generation fast enough? | Runtime measurement |
+
+Also, high speaker similarity does not guarantee naturalness.
