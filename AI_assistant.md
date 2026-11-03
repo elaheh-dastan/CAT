@@ -64,3 +64,31 @@ ElevenLabs: Managed API and hosted voice-cloning products. Useful for quickly ev
 | Latency / RTF	| Is generation fast enough? | Runtime measurement |
 
 Also, high speaker similarity does not guarantee naturalness.
+
+## NeMo NanoCodec
+The NeMo NanoCodec is a neural audio codec that leverages finite scalar quantization and adversarial training with large speech language models to achieve state-of-the-art audio compression across different bitrate and frame rate ranges.
+
+NeMo NanoCodec is like a ZIP file for human voices. But instead of compressing text or pictures, it compresses sound.
+
+Imagine you record yourself saying: "Hello! How are you today?"
+
+Your voice contains thousands of tiny sound measurements. That's a lot of information!
+
+NanoCodec does three things:
+
+1. Listens to your voice and figures out what the sound is like.
+2. Turns it into a small collection of numbers (called audio tokens), instead of keeping all those sound measurements.
+3. Turns those numbers back into sound, trying to make it sound just like your original voice.
+
+Why is it special?
+
+magine another AI needs 100 little steps to make one second of speech.
+
+NanoCodec can represent one second of speech using only 12.5 frames.
+
+That means a speech-generating AI can produce audio with fewer sequential steps, potentially making it speak much faster.
+
+- Finite Scalar Quantization(FSQ): Choosing numbers from a limited set, like rounding 3.78 to 4, to make sound information smaller.
+- Adversarial training: Another neural network acts like a teacher, judging whether the recreated sound sounds real. The codec learns to fool that teacher.
+- Bitrate: How much information is used to store one second of audio. Smaller means more compression.
+- Frame rate: How many little chunks of sound the codec produces per second.
