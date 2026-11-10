@@ -161,4 +161,11 @@ This is the chain-of-thought-inspired component of G-Eval.
 G-Eval can inspect the probability distribution over possible score tokens. If your model adapter does not expose the required log-probabilities, DeepEval falls back to the raw integer score.
 
 
+## Conclusion
+**G-Eval is not necessarily better for every evaluation task.** Its main advantage is using structured evaluation steps to improve reasoning and scoring consistency, which can be valuable for complex or subjective assessments.
 
+However, for simple binary tasks, such as determining whether two answers are semantically equivalent, this additional reasoning introduces unnecessary complexity, latency, and token costs.
+
+In our experiments, **G-Eval did not improve pass/fail agreement or reduce prediction instability (flip-flops), despite approximately doubling token consumption.**
+
+Therefore, **I recommend using a direct binary LLM judge for simple evaluations and reserving G-Eval for tasks where multi-step reasoning demonstrably improves evaluation quality.** The choice should be driven by measured performance improvements rather than the assumption that more reasoning produces better judgments.
